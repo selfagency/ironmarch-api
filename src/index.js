@@ -1,5 +1,4 @@
 require('dotenv').config()
-require('module-alias/register')
 global.debug = process.env.ENVIRONMENT !== 'development'
 
 const app = require('./app')
