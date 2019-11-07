@@ -1,0 +1,23 @@
+{
+  "name": "ironmarch-api",
+  "description": "API interface for Iron March data dump",
+  "version": "0.1.0",
+  "repository": "https://gitlab.com/jewishworker/ironmarch-api",
+  "author": "The Jewish Worker <hello@jewishworker.org>",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "./node_modules/.bin/nodemon src/index.js --watch src"
+  },
+  "dependencies": {
+    "envkey": "^1.2.7",
+    "express": "^4.17.1",
+    "mysql2": "^2.0.0",
+    "sequelize": "^5.21.2"
+  },
+  "devDependencies": {
+    "consola": "^2.10.1",
+    "nodemon": "^1.19.4"
+  }
+}
