@@ -1,6 +1,4 @@
 const { db, Model, DataTypes } = require('../db')
-const Thread = require('./thread')
-const User = require('./user')
 
 class Msg extends Model {}
 Msg.init(
@@ -32,10 +30,7 @@ Msg.init(
       field: 'msg_is_first_post'
     }
   },
-  { sequelize: db, modelName: 'messages', timestamps: false }
+  { sequelize: db, modelName: 'message', tableName: 'messages', timestamps: false }
 )
-
-Msg.hasOne(Thread, { as: 'title', foreignKey: 'id', sourceKey: 'threadId' })
-Msg.hasOne(User, { as: 'author', foreignKey: 'id', sourceKey: 'authorId' })
 
 module.exports = Msg

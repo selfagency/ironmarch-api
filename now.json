@@ -1,0 +1,13 @@
+{
+  "env": {
+    "ENVIRONMENT": "@environment",
+    "CACHE_HOST": "@cache_host",
+    "CACHE_PORT": "@cache_port",
+    "CACHE_PASS": "@cache_pass",
+    "DB_HOST": "@db_host",
+    "DB_PORT": "@db_port",
+    "DB_USER": "@db_user",
+    "DB_PASS": "@db_pass",
+    "PORT": "@port"
+  }
+}

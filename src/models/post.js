@@ -1,7 +1,7 @@
 const { db, Model, DataTypes } = require('../db')
-const User = require('./user')
 
 class Post extends Model {}
+
 Post.init(
   {
     id: {
@@ -31,9 +31,7 @@ Post.init(
       field: 'index_item_id'
     }
   },
-  { sequelize: db, modelName: 'posts', timestamps: false }
+  { sequelize: db, modelName: 'post', tableName: 'posts', timestamps: false }
 )
-
-Post.hasOne(User, { as: 'author', foreignKey: 'id', targetKey: 'authorId' })
 
 module.exports = Post

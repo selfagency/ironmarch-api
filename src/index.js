@@ -1,12 +1,12 @@
-require('envkey')
-const express = require('express')
-const routes = require('./routes')
-global.Console = require('consola')
+require('dotenv').config()
+require('module-alias/register')
 global.debug = process.env.ENVIRONMENT !== 'development'
 
-const app = express()
+const app = require('./app')
+const routes = require('./routes')
 const port = process.env.PORT || 3031
+
 routes(app)
 
 app.listen(port)
-Console.log(`Listening on port ${port}`)
+console.log(`Listening on port ${port}`)

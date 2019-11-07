@@ -1,6 +1,7 @@
 const { db, Model, DataTypes } = require('../db')
 
 class User extends Model {}
+
 User.init(
   {
     id: {
@@ -43,7 +44,7 @@ User.init(
       field: 'timezone'
     }
   },
-  { sequelize: db, modelName: 'users', timestamps: false }
+  { sequelize: db, modelName: 'user', tableName: 'users', timestamps: false }
 )
 
 module.exports = User

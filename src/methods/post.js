@@ -1,28 +1,36 @@
 const { Op } = require('../db')
-const dbPost = require('../models/post')
+const { Post } = require('../models')
 
-const post = params => {
+const post = async params => {
   try {
-    const { id, user, limit, offset, terms } = params
-    let output,
+    const { user, terms } = params,
+      include = ['author']
+
+    let { id, limit, offset } = params,
+      output,
       where = {}
+
+    id = id ? parseInt(id) : null
+    limit = limit ? parseInt(limit) : 50
+    offset = offset ? parseInt(offset) : 0
 
     if (user) where.authorId = { [Op.eq]: user }
     if (terms) where.content = { [Op.like]: `%${terms}%` }
 
     output = id
-      ? dbPost.findById(parseInt(id))
-      : dbPost.findAll({
+      ? await Post.findOne({ where: { id: { [Op.eq]: id } } })
+      : await Post.findAll({
           where,
-          limit: limit ? parseInt(limit) : 50,
-          offset: offset ? parseInt(offset) : 0
+          limit,
+          offset,
+          include
         })
 
-    // Console.log(output)
-    return output
+    // console.log(output)
+    return output ? output : false
   } catch (err) {
-    Console.error(err)
-    return err
+    console.error(err)
+    throw err
   }
 }
 

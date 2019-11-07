@@ -1,6 +1,7 @@
 const { db, Model, DataTypes } = require('../db')
 
 class Thread extends Model {}
+
 Thread.init(
   {
     id: {
@@ -14,7 +15,7 @@ Thread.init(
       field: 'mt_title'
     }
   },
-  { sequelize: db, modelName: 'threads', timestamps: false }
+  { sequelize: db, modelName: 'thread', tableName: 'threads', timestamps: false }
 )
 
 module.exports = Thread
