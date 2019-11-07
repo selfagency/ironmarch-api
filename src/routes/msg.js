@@ -1,7 +1,7 @@
 const { Msg } = require('../methods')
 
-const msg = (path, app, cache) => {
-  app.use(path, cache.route(), async (req, res, next) => {
+const msg = (path, app, cache, cors, corsOpts) => {
+  app.use(path, cors(corsOpts), cache.route(), async (req, res, next) => {
     let out
     try {
       out = await Msg(req.query)

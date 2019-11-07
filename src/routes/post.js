@@ -1,7 +1,7 @@
 const { Post } = require('../methods')
 
-const post = (path, app, cache) => {
-  app.use(path, cache.route(), async (req, res, next) => {
+const post = (path, app, cache, cors, corsOpts) => {
+  app.use(path, cors(corsOpts), cache.route(), async (req, res, next) => {
     let out
     try {
       out = await Post(req.query)

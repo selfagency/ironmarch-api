@@ -1,12 +1,18 @@
+const cors = require('cors')
+
 const cache = require('./cache')
 const msg = require('./routes/msg')
 const post = require('./routes/post')
 const user = require('./routes/user')
 
+const corsOpts = {
+  origin: '*'
+}
+
 const routes = app => {
-  msg('/msg', app, cache)
-  post('/post', app, cache)
-  user('/user', app, cache)
+  msg('/api/msg', app, cache, cors, corsOpts)
+  post('/api/post', app, cache, cors, corsOpts)
+  user('/api/user', app, cache, cors, corsOpts)
 }
 
 module.exports = routes

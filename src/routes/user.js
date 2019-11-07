@@ -1,7 +1,7 @@
 const { User } = require('../methods')
 
-const user = (path, app, cache) => {
-  app.use(path, cache.route(), async (req, res, next) => {
+const user = (path, app, cache, cors, corsOpts) => {
+  app.use(path, cors(corsOpts), cache.route(), async (req, res, next) => {
     let out
     try {
       out = await User(req.query)
