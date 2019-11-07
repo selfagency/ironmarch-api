@@ -1,3 +1,5 @@
+global.debug = process.env.ENVIRONMENT !== 'development'
+
 const app = require('../../src/app')
 const cache = require('../../src/cache')
 const post = require('../../src/routes/post')
