@@ -1,5 +1,6 @@
 const Msg = require('./models/msg')
 const Post = require('./models/post')
+const Status = require('./models/status')
 const Thread = require('./models/thread')
 const User = require('./models/user')
 
@@ -8,5 +9,6 @@ Msg.hasOne(User, { as: 'author', sourceKey: 'authorId', foreignKey: 'id' })
 Post.hasOne(User, { as: 'author', sourceKey: 'authorId', foreignKey: 'id' })
 User.hasMany(Post, { as: 'posts', sourceKey: 'id', foreignKey: 'authorId' })
 User.hasMany(Msg, { as: 'messages', sourceKey: 'id', foreignKey: 'authorId' })
+User.hasMany(Status, { as: 'statuses', sourceKey: 'id', foreignKey: 'authorId' })
 
 module.exports = { Msg, Post, Thread, User }

@@ -1,8 +1,8 @@
 const { db, Model, DataTypes } = require('../db')
 
-class Post extends Model {}
+class Status extends Model {}
 
-Post.init(
+Status.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -21,13 +21,9 @@ Post.init(
     date: {
       type: DataTypes.INTEGER,
       field: 'index_date_created'
-    },
-    related: {
-      type: DataTypes.INTEGER,
-      field: 'index_item_id'
     }
   },
-  { sequelize: db, modelName: 'post', tableName: 'posts', timestamps: false }
+  { sequelize: db, modelName: 'status', tableName: 'statuses', timestamps: false }
 )
 
-module.exports = Post
+module.exports = Status

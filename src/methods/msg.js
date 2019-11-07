@@ -6,7 +6,7 @@ const msg = async params => {
     const { terms } = params,
       include = ['title', 'author']
 
-    let { id, user, limit, offset } = params,
+    let { id, user, limit, offset, sort, order } = params,
       output,
       where = {}
 
@@ -14,12 +14,14 @@ const msg = async params => {
     user = user ? parseInt(user) : null
     limit = limit ? parseInt(limit) : 50
     offset = offset ? parseInt(offset) : 0
+    sort = sort ? sort : 'date'
+    order = order ? [[sort, order]] : [[sort, 'DESC']]
 
     if (user) where.authorId = { [Op.eq]: user }
     if (terms) where.content = { [Op.like]: `%${terms}%` }
 
     output = id
-      ? await Msg.findOne({ where: { id: { [Op.eq]: id } } })
+      ? await Msg.findOne({ where: { id: { [Op.eq]: id } }, order })
       : await Msg.findAll({
           where,
           limit,
