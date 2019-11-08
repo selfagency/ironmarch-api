@@ -13,6 +13,10 @@ Thread.init(
     content: {
       type: DataTypes.TEXT,
       field: 'mt_title'
+    },
+    recipientId: {
+      type: DataTypes.INTEGER,
+      field: 'mt_to_member_id'
     }
   },
   { sequelize: db, modelName: 'thread', tableName: 'threads', timestamps: false }

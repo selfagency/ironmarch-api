@@ -4,7 +4,7 @@ const { Msg } = require('../models')
 const msg = async params => {
   try {
     const { terms } = params,
-      include = ['title', 'author']
+      include = [{ association: 'thread', include: ['recipient'] }, 'author']
 
     let { id, user, limit, offset, sort, order } = params,
       output,
