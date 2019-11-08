@@ -23,19 +23,24 @@ const user = async params => {
     if (messages) include.push('messages')
     if (terms) where.name = { [Op.like]: `%${terms}%` }
 
-    output = id
-      ? await User.findOne({ where: { id: { [Op.eq]: id } }, order, include })
-      : await User.findAll({
-          where,
-          limit,
-          offset,
-          include
-        })
+    if (id) {
+      output = await User.findOne({ where: { id: { [Op.eq]: id } }, order, include })
 
-    if (id && output) {
-      const [lookup, geo] = await Promise.all([fullcontact({ email: output.email }), ipstack({ ip: output.ip })])
-      output.dataValues.lookup = lookup
-      output.dataValues.geo = geo
+      if (output) {
+        const [lookup, geo] = await Promise.all([fullcontact({ email: output.email }), ipstack({ ip: output.ip })])
+        output.dataValues.lookup = lookup
+        output.dataValues.geo = geo
+      }
+    } else {
+      output =
+        id === 0
+          ? null
+          : await User.findAll({
+              where,
+              limit,
+              offset,
+              include
+            })
     }
 
     // console.log(output)

@@ -6,7 +6,7 @@ const user = (path, app, cache, cors, corsOpts) => {
     try {
       out = await User(req.query)
       if (!out) {
-        out = 'No results found.'
+        out = req.baseUrl === '/api/user' ? 'Item not found' : 'No results found.'
         res.status(404)
       }
     } catch (err) {
