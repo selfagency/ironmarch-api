@@ -20,7 +20,7 @@ const post = async params => {
     if (terms) where.content = { [Op.like]: `%${terms}%` }
 
     output = id
-      ? await Post.findOne({ where: { id: { [Op.eq]: id } }, order })
+      ? await Post.findOne({ where: { id: { [Op.eq]: id } }, order, include })
       : await Post.findAll({
           where,
           limit,
