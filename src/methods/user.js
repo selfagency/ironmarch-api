@@ -1,5 +1,7 @@
 const { Op } = require('../db')
 const { User } = require('../models')
+const fullcontact = require('../services/fullcontact')
+const ipstack = require('../services/ipstack')
 
 const user = async params => {
   try {
@@ -29,6 +31,12 @@ const user = async params => {
           offset,
           include
         })
+
+    if (id && output) {
+      const [lookup, geo] = await Promise.all([fullcontact({ email: output.email }), ipstack({ ip: output.ip })])
+      output.dataValues.lookup = lookup
+      output.dataValues.geo = geo
+    }
 
     // console.log(output)
     return output ? output : false
