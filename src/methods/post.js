@@ -11,8 +11,8 @@ const post = async params => {
       where = {}
 
     id = id ? parseInt(id) : null
-    limit = limit ? parseInt(limit) : 50
-    offset = offset ? parseInt(offset) : 0
+    limit = limit ? parseInt(limit) : null
+    offset = offset ? parseInt(offset) : null
     sort = sort ? sort : 'date'
     order = order ? [[sort, order]] : [[sort, 'DESC']]
 
