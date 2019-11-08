@@ -8,6 +8,8 @@
     "DB_PORT": "@ironmarch_db_port",
     "DB_USER": "@ironmarch_db_user",
     "DB_PASS": "@ironmarch_db_pass",
-    "DB_NAME": "@ironmarch_db_name"
+    "DB_NAME": "@ironmarch_db_name",
+    "IPSTACK": "@ironmarch_ipstack",
+    "FULLCONTACT": "@ironmarch_fullcontact"
   }
 }
