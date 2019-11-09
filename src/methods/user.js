@@ -43,7 +43,7 @@ const user = async params => {
             })
     }
 
-    // console.log(output)
+    console.log(output)
     return output ? output : false
   } catch (err) {
     console.error(err)

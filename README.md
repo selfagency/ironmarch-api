@@ -17,11 +17,51 @@
 yarn install || npm install
 ```
 
-## Usage
+## Development
+
+This API service is designed to make use of Now.sh's serverless interface. Now-friendly API routes, which duplicate the routes specified in the main `routes.js` file can be found in the API folder. To test with Now, install `now` from, then run `now dev`.
 
 ```sh
-yarn start || npm run start
+yarn global add now || npm install -g now
+now dev
 ```
+
+You can alternatively proceed without the use of Now.
+
+```sh
+yarn dev || npm run dev
+```
+
+## Deploy
+
+```sh
+now
+```
+
+## Routes
+
+**`/post`**
+
+- `id`: Get post by ID *n* (Integer)
+- `limit`: Limit results by *n*  (Integer)
+- `offset`: Offset results by *n*  (Integer)
+- `user`: Get posts by user ID *n*  (Integer)
+- `terms`: Find posts containing terms (String)
+
+**`/message`**
+
+- `id`: Get message by ID *n* (Integer)
+- `limit`: Limit results by *n*  (Integer)
+- `offset`: Offset results by *n*  (Integer)
+- `user`: Get messages by user ID *n*  (Integer)
+- `terms`: Find messages containing terms (String)
+
+**`/user`**
+
+- `id`: Get user by ID *n* (Integer)
+- `limit`: Limit results by *n*  (Integer)
+- `offset`: Offset results by *n*  (Integer)
+- `terms`: Find usernames containing terms (String)
 
 ## Author
 
