@@ -19,7 +19,7 @@ yarn install || npm install
 
 ## Development
 
-This API service is designed to make use of Now.sh's serverless interface. Now-friendly API routes, which duplicate the routes specified in the main `routes.js` file can be found in the API folder. To test with Now, install `now` from, then run `now dev`.
+This API service is designed to make use of Now.sh's serverless interface. Now-friendly API routes, which duplicate the routes specified in the main `routes.js` file can be found in the API folder. To test with Now, install `now`, then run `now dev`.
 
 ```sh
 yarn global add now || npm install -g now
