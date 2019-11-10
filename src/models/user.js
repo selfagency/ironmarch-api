@@ -70,6 +70,18 @@ User.init(
     signature: {
       type: DataTypes.STRING,
       field: 'signature'
+    },
+    dobD: {
+      type: DataTypes.INTEGER,
+      field: 'bday_day'
+    },
+    dobM: {
+      type: DataTypes.INTEGER,
+      field: 'bday_month'
+    },
+    dobY: {
+      type: DataTypes.INTEGER,
+      field: 'bday_year'
     }
   },
   { sequelize: db, modelName: 'user', tableName: 'users', timestamps: false }
