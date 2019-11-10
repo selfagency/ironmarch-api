@@ -42,6 +42,10 @@ User.init(
     timezone: {
       type: DataTypes.STRING,
       field: 'timezone'
+    },
+    lookup: {
+      type: DataTypes.STRING,
+      field: 'lookup'
     }
   },
   { sequelize: db, modelName: 'user', tableName: 'users', timestamps: false }
