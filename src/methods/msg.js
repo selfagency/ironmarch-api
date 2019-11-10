@@ -29,7 +29,6 @@ const msg = async params => {
           include
         })
 
-    console.log(output)
     return output ? output : false
   } catch (err) {
     console.error(err)
