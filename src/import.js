@@ -1,43 +1,43 @@
 require('dotenv').config()
 const fs = require('fs')
 const util = require('util')
-const { User } = require('./models')
-const { Op } = require('./db')
+const { User } = require('./src/models')
+const { Op } = require('./src/db')
 
 const importer = async () => {
   const readFile = util.promisify(fs.readFile)
-  const dir = 'data'
   let lookups = []
 
   const users = await User.findAll()
 
-  fs.readdir(dir, async (err, files) => {
-    if (err) console.error(err)
+  try {
+    lookups = JSON.parse(await readFile('data/members2.json', 'utf-8'))
+  } catch (_err) {
+    console.error(_err)
+  }
 
-    for (let k in files) {
+  for (let k in users) {
+    let query
+
+    const lookup = lookups.filter(lu => {
+      return parseInt(lu.pp_member_id) === users[k].id
+    })[0]
+
+    if (lookup) {
+      query = {
+        signature: lookup.signature
+      }
+
+      console.log(`query: ${JSON.stringify(query)}`)
+
       try {
-        const data = JSON.parse(await readFile(`${dir}/${files[k]}`, 'utf-8'))
-        data.email = files[k].replace('.curloutput', '')
-        lookups.push(data)
-      } catch (_err) {
-        console.error(_err)
+        const out = await User.update(query, { where: { id: { [Op.eq]: users[k].id } } })
+        console.log(`out: ${out}\n\n`)
+      } catch (err) {
+        console.error(err)
       }
     }
-
-    for (let k in users) {
-      const lookup = lookups.filter(lu => {
-        return lu.email === users[k].email
-      })
-
-      if (lookup.length) {
-        const out = await User.update(
-          { lookup: JSON.stringify(lookup[0]) },
-          { where: { id: { [Op.eq]: users[k].id } } }
-        )
-        console.log(out)
-      }
-    }
-  })
+  }
 }
 
 ;(async () => {

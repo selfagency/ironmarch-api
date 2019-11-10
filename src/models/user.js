@@ -46,6 +46,30 @@ User.init(
     lookup: {
       type: DataTypes.STRING,
       field: 'lookup'
+    },
+    emailAlt: {
+      type: DataTypes.STRING,
+      field: 'email_alt'
+    },
+    nameAlt: {
+      type: DataTypes.STRING,
+      field: 'name_alt'
+    },
+    tagline: {
+      type: DataTypes.STRING,
+      field: 'member_title'
+    },
+    bio: {
+      type: DataTypes.STRING,
+      field: 'bio'
+    },
+    photo: {
+      type: DataTypes.STRING,
+      field: 'photo'
+    },
+    signature: {
+      type: DataTypes.STRING,
+      field: 'signature'
     }
   },
   { sequelize: db, modelName: 'user', tableName: 'users', timestamps: false }
