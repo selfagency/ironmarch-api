@@ -29,7 +29,8 @@ const user = async params => {
               where,
               limit,
               offset,
-              include
+              include,
+              order: [['name', 'ASC']]
             })
     }
 

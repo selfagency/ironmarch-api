@@ -26,7 +26,8 @@ const msg = async params => {
           where,
           limit,
           offset,
-          include
+          include,
+          order
         })
 
     return output ? output : false
