@@ -20,9 +20,9 @@ const user = async params => {
     if (terms)
       where = {
         [Op.or]: [
-          db.where(db.fn('lower', db.col('name')), { [Op.like]: `%${terms}%` }),
-          db.where(db.fn('lower', db.col('email')), { [Op.like]: `%${terms}%` }),
-          db.where(db.fn('lower', db.col('geo')), { [Op.like]: `%${terms}%` })
+          db.where(db.fn('lower', db.col('name')), { [Op.like]: `%${terms.toLowerCase()}%` }),
+          db.where(db.fn('lower', db.col('email')), { [Op.like]: `%${terms.toLowerCase()}%` }),
+          db.where(db.fn('lower', db.col('geo')), { [Op.like]: `%${terms.toLowerCase()}%` })
         ],
         lookup: dox ? { [Op.ne]: null } : null
       }
