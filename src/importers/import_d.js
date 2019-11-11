@@ -9,7 +9,7 @@ const importer = async () => {
   users = await User.findAll()
 
   for (let k in users) {
-    const query = `https://api.ekata.com/4.1/email?api_key=59d81b80654e46ca9238a0cb8c41118e&email_address=${users[k].email}`
+    const query = `https://api.ekata.com/4.1/email?api_key=${process.env.EKATA}&email_address=${users[k].email}`
     console.log(`${query}:\n`)
 
     try {

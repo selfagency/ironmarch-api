@@ -1,6 +1,6 @@
 require('dotenv').config()
-const { User } = require('./models')
-const { Op } = require('./db')
+const { User } = require('../models')
+const { Op } = require('../db')
 const got = require('got')
 
 const importer = async () => {
@@ -9,7 +9,7 @@ const importer = async () => {
   users = await User.findAll()
 
   for (let k in users) {
-    const query = `https://api.ipgeolocationapi.com/geolocate/${users[k].ip}`
+    const query = `http://api.ipstack.com/${users[k].ip}?access_key=${process.env.IPSTACK}`
     console.log(`${query}:\n`)
 
     try {

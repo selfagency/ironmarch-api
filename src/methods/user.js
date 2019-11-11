@@ -16,8 +16,16 @@ const user = async params => {
     dox = dox === 'true' ? true : null
 
     include.push({ association: 'statuses', order: [['date', 'DESC']] })
-    if (terms) where.name = { [Op.like]: `%${terms}%` }
-    if (dox) where.lookup = { [Op.ne]: null }
+
+    if (terms)
+      where = {
+        [Op.or]: [
+          db.where(db.fn('lower', db.col('name')), { [Op.like]: `%${terms}%` }),
+          db.where(db.fn('lower', db.col('email')), { [Op.like]: `%${terms}%` }),
+          db.where(db.fn('lower', db.col('geo')), { [Op.like]: `%${terms}%` })
+        ],
+        lookup: dox ? { [Op.ne]: null } : null
+      }
 
     if (id) {
       output = await User.findOne({ where: { id: { [Op.eq]: id } }, order, include })
