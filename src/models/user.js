@@ -82,6 +82,10 @@ User.init(
     dobY: {
       type: DataTypes.INTEGER,
       field: 'bday_year'
+    },
+    geo: {
+      type: DataTypes.STRING,
+      field: 'geo'
     }
   },
   { sequelize: db, modelName: 'user', tableName: 'users', timestamps: false }
