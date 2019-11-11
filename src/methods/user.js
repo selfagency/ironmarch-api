@@ -16,16 +16,20 @@ const user = async params => {
     dox = dox === 'true' ? true : null
 
     include.push({ association: 'statuses', order: [['date', 'DESC']] })
+    where.lookup = dox ? { [Op.ne]: null } : null
 
-    if (terms)
+    if (terms) {
       where = {
         [Op.or]: [
-          db.where(db.fn('lower', db.col('name')), { [Op.like]: `%${terms.toLowerCase()}%` }),
-          db.where(db.fn('lower', db.col('email')), { [Op.like]: `%${terms.toLowerCase()}%` }),
-          db.where(db.fn('lower', db.col('geo')), { [Op.like]: `%${terms.toLowerCase()}%` })
-        ],
-        lookup: dox ? { [Op.ne]: null } : null
+          db.where(db.fn('upper', db.col('name')), { [Op.substring]: terms.toUpperCase() }),
+          db.where(db.fn('upper', db.col('name_alt')), { [Op.substring]: terms.toUpperCase() }),
+          db.where(db.fn('upper', db.col('email')), { [Op.substring]: terms.toUpperCase() }),
+          db.where(db.fn('upper', db.col('email_alt')), { [Op.substring]: terms.toUpperCase() }),
+          db.where(db.fn('upper', db.col('bio')), { [Op.substring]: terms.toUpperCase() }),
+          db.where(db.fn('upper', db.col('geo')), { [Op.substring]: terms.toUpperCase() })
+        ]
       }
+    }
 
     if (id) {
       output = await User.findOne({ where: { id: { [Op.eq]: id } }, order, include })
