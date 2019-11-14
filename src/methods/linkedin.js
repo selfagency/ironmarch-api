@@ -19,9 +19,17 @@ const linkedin = async params => {
       order: [['name', 'ASC']]
     })
 
-    output = output.filter(o => {
-      return o.lookup.linkedin
-    })
+    output = output
+      .filter(o => {
+        return o.lookup.linkedin
+      })
+      .map(o => {
+        return {
+          id: o.id,
+          name: o.name,
+          li: o.lookup.linkedin
+        }
+      })
 
     return output ? output : false
   } catch (err) {

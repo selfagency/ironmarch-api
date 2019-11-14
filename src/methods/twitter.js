@@ -21,9 +21,17 @@ const twitter = async params => {
       order: [['name', 'ASC']]
     })
 
-    output = output.filter(o => {
-      return o.socialTwitter || o.lookup.twitter
-    })
+    output = output
+      .filter(o => {
+        return o.socialTwitter || o.lookup.twitter
+      })
+      .map(o => {
+        return {
+          id: o.id,
+          name: o.name,
+          tw: o.socialTwitter || o.lookup.twitter
+        }
+      })
 
     return output ? output : false
   } catch (err) {
