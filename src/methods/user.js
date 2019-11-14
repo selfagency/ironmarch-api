@@ -30,7 +30,7 @@ const user = async params => {
           db.where(db.fn('upper', db.col('bio')), { [Op.substring]: terms.toUpperCase() }),
           db.where(db.fn('upper', db.col('ideology_alt')), { [Op.substring]: terms.toUpperCase() }),
           db.where(db.fn('upper', db.col('geo')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('geoAlt')), { [Op.substring]: terms.toUpperCase() })
+          db.where(db.fn('upper', db.col('geo_alt')), { [Op.substring]: terms.toUpperCase() })
         ]
       }
     }
