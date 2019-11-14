@@ -9,19 +9,21 @@ const importer = async () => {
   users = await User.findAll()
 
   for (let k in users) {
-    const query = `http://api.ipstack.com/${users[k].ip}?access_key=${process.env.IPSTACK}`
+    const query = `http://api.ipstack.com/${users[k].ipAlt}?access_key=${process.env.IPSTACK}`
     console.log(`${query}:\n`)
 
     try {
-      lookup = (await got(query, {
-        json: true
-      })).body
+      lookup = (
+        await got(query, {
+          json: true
+        })
+      ).body
 
       console.log(lookup)
 
       if (lookup) {
         try {
-          const out = await User.update({ geo: JSON.stringify(lookup) }, { where: { id: { [Op.eq]: users[k].id } } })
+          const out = await User.update({ geoAlt: JSON.stringify(lookup) }, { where: { id: { [Op.eq]: users[k].id } } })
           console.log(`out: ${out}\n\n`)
         } catch (err) {
           console.error(err)

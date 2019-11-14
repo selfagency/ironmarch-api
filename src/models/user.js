@@ -14,13 +14,41 @@ User.init(
       type: DataTypes.STRING,
       field: 'name'
     },
+    nameAlt: {
+      type: DataTypes.STRING,
+      field: 'name_alt'
+    },
+    nameAlt2: {
+      type: DataTypes.STRING,
+      field: 'name_alt_2'
+    },
     email: {
       type: DataTypes.STRING,
       field: 'email'
     },
+    emailAlt: {
+      type: DataTypes.STRING,
+      field: 'email_alt'
+    },
+    emailAlt2: {
+      type: DataTypes.STRING,
+      field: 'email_alt_2'
+    },
     ip: {
       type: DataTypes.STRING,
       field: 'ip_address'
+    },
+    ipAlt: {
+      type: DataTypes.STRING,
+      field: 'ip_alt'
+    },
+    geo: {
+      type: DataTypes.STRING,
+      field: 'geo'
+    },
+    geoAlt: {
+      type: DataTypes.STRING,
+      field: 'geo_alt'
     },
     joined: {
       type: DataTypes.INTEGER,
@@ -47,14 +75,6 @@ User.init(
       type: DataTypes.STRING,
       field: 'lookup'
     },
-    emailAlt: {
-      type: DataTypes.STRING,
-      field: 'email_alt'
-    },
-    nameAlt: {
-      type: DataTypes.STRING,
-      field: 'name_alt'
-    },
     tagline: {
       type: DataTypes.STRING,
       field: 'member_title'
@@ -63,9 +83,25 @@ User.init(
       type: DataTypes.STRING,
       field: 'bio'
     },
+    interests: {
+      type: DataTypes.STRING,
+      field: 'interests'
+    },
+    ideology: {
+      type: DataTypes.STRING,
+      field: 'ideology'
+    },
+    ideologyAlt: {
+      type: DataTypes.STRING,
+      field: 'ideology_alt'
+    },
     photo: {
       type: DataTypes.STRING,
       field: 'photo'
+    },
+    photoAlt: {
+      type: DataTypes.STRING,
+      field: 'photo_alt'
     },
     signature: {
       type: DataTypes.STRING,
@@ -83,9 +119,45 @@ User.init(
       type: DataTypes.INTEGER,
       field: 'bday_year'
     },
-    geo: {
+    location: {
       type: DataTypes.STRING,
-      field: 'geo'
+      field: 'location'
+    },
+    gender: {
+      type: DataTypes.STRING,
+      field: 'gender'
+    },
+    url: {
+      type: DataTypes.STRING,
+      field: 'url'
+    },
+    socialAim: {
+      type: DataTypes.STRING,
+      field: 'social_aim'
+    },
+    socialMsn: {
+      type: DataTypes.STRING,
+      field: 'social_msn'
+    },
+    socialIcq: {
+      type: DataTypes.STRING,
+      field: 'social_icq'
+    },
+    socialSkype: {
+      type: DataTypes.STRING,
+      field: 'social_skype'
+    },
+    socialYahoo: {
+      type: DataTypes.STRING,
+      field: 'social_yahoo'
+    },
+    socialJabber: {
+      type: DataTypes.STRING,
+      field: 'social_jabber'
+    },
+    socialTwitter: {
+      type: DataTypes.STRING,
+      field: 'social_twitter'
     }
   },
   { sequelize: db, modelName: 'user', tableName: 'users', timestamps: false }
