@@ -42,8 +42,13 @@ const user = async params => {
         where,
         limit,
         offset,
-        include,
         order: [['name', 'ASC']]
+      })
+    }
+
+    if (identity) {
+      output = output.filter(user => {
+        return user.lookup.fullName !== null && user.lookup.fullName !== ''
       })
     }
 
