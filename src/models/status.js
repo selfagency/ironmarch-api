@@ -23,7 +23,12 @@ Status.init(
       field: 'index_date_created'
     }
   },
-  { sequelize: db, modelName: 'status', tableName: 'statuses', timestamps: false }
+  {
+    sequelize: db,
+    modelName: 'status',
+    tableName: 'statuses',
+    timestamps: false
+  }
 )
 
 module.exports = Status

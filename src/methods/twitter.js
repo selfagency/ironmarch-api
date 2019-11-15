@@ -11,7 +11,10 @@ const twitter = async params => {
     offset = offset ? parseInt(offset) : null
 
     where = {
-      [Op.or]: [{ lookup: { [Op.ne]: null } }, { socialTwitter: { [Op.ne]: null, [Op.ne]: '' } }]
+      [Op.or]: [
+        { lookup: { [Op.ne]: null } },
+        { socialTwitter: { [Op.ne]: null, [Op.ne]: '' } }
+      ]
     }
 
     output = await User.findAll({

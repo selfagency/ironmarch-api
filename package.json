@@ -11,6 +11,7 @@
     "dev": "./node_modules/.bin/nodemon src/index.js --watch src"
   },
   "dependencies": {
+    "1-liners": "^0.4.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-redis-cache": "^1.1.3",

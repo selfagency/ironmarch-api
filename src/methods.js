@@ -7,4 +7,13 @@ const Thread = require('./methods/thread')
 const Twitter = require('./methods/twitter')
 const User = require('./methods/user')
 
-module.exports = { Facebook, Linkedin, Locales, Msg, Post, Thread, Twitter, User }
+module.exports = {
+  Facebook,
+  Linkedin,
+  Locales,
+  Msg,
+  Post,
+  Thread,
+  Twitter,
+  User
+}

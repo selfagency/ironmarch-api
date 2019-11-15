@@ -6,7 +6,10 @@ const post = (path, app, cache, cors, corsOpts) => {
     try {
       out = await Post(req.query)
       if (!out || !Object.entries(out).length) {
-        out = req.baseUrl === '/api/post' ? new Error('Item not found') : new Error('No results found')
+        out =
+          req.baseUrl === '/api/post'
+            ? new Error('Item not found')
+            : new Error('No results found')
         res.status(404)
       }
     } catch (err) {

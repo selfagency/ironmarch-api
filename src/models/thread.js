@@ -19,7 +19,12 @@ Thread.init(
       field: 'mt_to_member_id'
     }
   },
-  { sequelize: db, modelName: 'thread', tableName: 'threads', timestamps: false }
+  {
+    sequelize: db,
+    modelName: 'thread',
+    tableName: 'threads',
+    timestamps: false
+  }
 )
 
 module.exports = Thread

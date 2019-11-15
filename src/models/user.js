@@ -38,17 +38,13 @@ User.init(
       type: DataTypes.STRING,
       field: 'ip_address'
     },
-    ipAlt: {
-      type: DataTypes.STRING,
-      field: 'ip_alt'
-    },
     geo: {
       type: DataTypes.STRING,
       field: 'geo'
     },
-    geoAlt: {
+    ips: {
       type: DataTypes.STRING,
-      field: 'geo_alt'
+      field: 'ips'
     },
     joined: {
       type: DataTypes.INTEGER,
@@ -83,6 +79,10 @@ User.init(
       type: DataTypes.STRING,
       field: 'bio'
     },
+    bioAlt: {
+      type: DataTypes.STRING,
+      field: 'bio_alt'
+    },
     interests: {
       type: DataTypes.STRING,
       field: 'interests'
@@ -90,10 +90,6 @@ User.init(
     ideology: {
       type: DataTypes.STRING,
       field: 'ideology'
-    },
-    ideologyAlt: {
-      type: DataTypes.STRING,
-      field: 'ideology_alt'
     },
     photo: {
       type: DataTypes.STRING,

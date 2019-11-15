@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"1-liners@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/1-liners/-/1-liners-0.4.2.tgz#93412925eb35e85391f91c015ddf44dff6a783ac"
+  integrity sha512-R3wiYhkUgwfhg5lhPSEKANTot/SJ1UK4nsf7oX2fb7fl936/yIMvO9Jr9FLCXlJ6A9WllCbgAGN60JEJQT7+XA==
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"

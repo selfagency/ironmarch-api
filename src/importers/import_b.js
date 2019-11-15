@@ -31,7 +31,9 @@ const importer = async () => {
       console.log(`query: ${JSON.stringify(query)}`)
 
       try {
-        const out = await User.update(query, { where: { id: { [Op.eq]: users[k].id } } })
+        const out = await User.update(query, {
+          where: { id: { [Op.eq]: users[k].id } }
+        })
         console.log(`out: ${out}\n\n`)
       } catch (err) {
         console.error(err)

@@ -21,9 +21,15 @@ const locales = async () => {
 
     users.forEach(user => {
       if (user.geo) {
-        cities[user.geo.city] ? cities[user.geo.city]++ : (cities[user.geo.city] = 1)
-        regions[user.geo.region_name] ? regions[user.geo.region_name]++ : (regions[user.geo.region_name] = 1)
-        countries[user.geo.country_name] ? countries[user.geo.country_name]++ : (countries[user.geo.country_name] = 1)
+        cities[user.geo.city]
+          ? cities[user.geo.city]++
+          : (cities[user.geo.city] = 1)
+        regions[user.geo.region_name]
+          ? regions[user.geo.region_name]++
+          : (regions[user.geo.region_name] = 1)
+        countries[user.geo.country_name]
+          ? countries[user.geo.country_name]++
+          : (countries[user.geo.country_name] = 1)
       }
     })
 

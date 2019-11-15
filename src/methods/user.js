@@ -21,22 +21,43 @@ const user = async params => {
     if (terms) {
       where = {
         [Op.or]: [
-          db.where(db.fn('upper', db.col('name')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('name_alt')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('name_alt_2')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('email')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('email_alt')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('email_alt_2')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('bio')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('ideology_alt')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('geo')), { [Op.substring]: terms.toUpperCase() }),
-          db.where(db.fn('upper', db.col('geo_alt')), { [Op.substring]: terms.toUpperCase() })
+          db.where(db.fn('upper', db.col('name')), {
+            [Op.substring]: terms.toUpperCase()
+          }),
+          db.where(db.fn('upper', db.col('name_alt')), {
+            [Op.substring]: terms.toUpperCase()
+          }),
+          db.where(db.fn('upper', db.col('name_alt_2')), {
+            [Op.substring]: terms.toUpperCase()
+          }),
+          db.where(db.fn('upper', db.col('email')), {
+            [Op.substring]: terms.toUpperCase()
+          }),
+          db.where(db.fn('upper', db.col('email_alt')), {
+            [Op.substring]: terms.toUpperCase()
+          }),
+          db.where(db.fn('upper', db.col('email_alt_2')), {
+            [Op.substring]: terms.toUpperCase()
+          }),
+          db.where(db.fn('upper', db.col('bio')), {
+            [Op.substring]: terms.toUpperCase()
+          }),
+          db.where(db.fn('upper', db.col('bio_alt')), {
+            [Op.substring]: terms.toUpperCase()
+          }),
+          db.where(db.fn('upper', db.col('geo')), {
+            [Op.substring]: terms.toUpperCase()
+          })
         ]
       }
     }
 
     if (id) {
-      output = await User.findOne({ where: { id: { [Op.eq]: id } }, order, include })
+      output = await User.findOne({
+        where: { id: { [Op.eq]: id } },
+        order,
+        include
+      })
     } else {
       output = await User.findAll({
         where,

@@ -11,7 +11,9 @@ const importer = async () => {
   const users = await User.findAll()
 
   try {
-    profiles = JSON.parse(await readFile(`${process.cwd()}/src/data/profiles.json`, 'utf-8'))
+    profiles = JSON.parse(
+      await readFile(`${process.cwd()}/src/data/profiles.json`, 'utf-8')
+    )
   } catch (_err) {
     console.error(_err)
   }
@@ -37,13 +39,15 @@ const importer = async () => {
         socialJabber: profile.field_9,
         socialSkype: profile.field_10,
         socialTwitter: profile.field_13,
-        ideologyAlt: profile.field_12
+        bioAlt: profile.field_12
       }
 
       console.log(`query: ${JSON.stringify(query)}`)
 
       try {
-        const out = await User.update(query, { where: { id: { [Op.eq]: users[k].id } } })
+        const out = await User.update(query, {
+          where: { id: { [Op.eq]: users[k].id } }
+        })
         console.log(`out: ${out}\n\n`)
       } catch (err) {
         console.error(err)

@@ -30,7 +30,12 @@ Msg.init(
       field: 'msg_is_first_post'
     }
   },
-  { sequelize: db, modelName: 'message', tableName: 'messages', timestamps: false }
+  {
+    sequelize: db,
+    modelName: 'message',
+    tableName: 'messages',
+    timestamps: false
+  }
 )
 
 module.exports = Msg

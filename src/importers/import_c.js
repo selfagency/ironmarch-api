@@ -23,7 +23,10 @@ const importer = async () => {
 
       if (lookup) {
         try {
-          const out = await User.update({ geoAlt: JSON.stringify(lookup) }, { where: { id: { [Op.eq]: users[k].id } } })
+          const out = await User.update(
+            { geoAlt: JSON.stringify(lookup) },
+            { where: { id: { [Op.eq]: users[k].id } } }
+          )
           console.log(`out: ${out}\n\n`)
         } catch (err) {
           console.error(err)

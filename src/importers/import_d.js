@@ -13,9 +13,11 @@ const importer = async () => {
     console.log(`${query}:\n`)
 
     try {
-      lookup = (await got(query, {
-        json: true
-      })).body
+      lookup = (
+        await got(query, {
+          json: true
+        })
+      ).body
 
       console.log(lookup)
 
