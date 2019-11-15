@@ -31,7 +31,14 @@ const meta = (path, app, cache, cors, corsOpts) => {
           out = await Locales()
           break
         case 'all':
-          const [facebook, twitter, linkedin, locales] = await Promise.all([
+          const [
+            discord,
+            facebook,
+            linkedin,
+            skype,
+            twitter,
+            locales
+          ] = await Promise.all([
             Discord(req.query),
             Facebook(req.query),
             Linkedin(req.query),
@@ -40,9 +47,11 @@ const meta = (path, app, cache, cors, corsOpts) => {
             Locales()
           ])
           out = {
+            discord,
             facebook,
-            twitter,
             linkedin,
+            skype,
+            twitter,
             locales
           }
           break
