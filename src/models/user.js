@@ -155,6 +155,10 @@ User.init(
       type: DataTypes.STRING,
       field: 'social_twitter'
     },
+    socialFacebook: {
+      type: DataTypes.STRING,
+      field: 'social_facebook'
+    },
     dossier: {
       type: DataTypes.STRING,
       field: 'dossier'
