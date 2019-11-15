@@ -1,7 +1,7 @@
 const { Op } = require('../db')
 const { User } = require('../models')
 
-const twitter = async params => {
+const skype = async params => {
   try {
     let { limit, offset } = params,
       output,
@@ -13,27 +13,32 @@ const twitter = async params => {
     where = {
       [Op.or]: [
         { lookup: { [Op.ne]: null } },
-        { socialTwitter: { [Op.ne]: null, [Op.ne]: '' } }
+        { socialSkype: { [Op.ne]: null, [Op.ne]: '' } }
       ]
     }
 
     output = await User.findAll({
-      attributes: ['id', 'name', 'lookup', 'socialTwitter'],
+      attributes: ['id', 'name', 'lookup', 'socialSkype'],
       where,
       limit,
       offset,
       order: [['name', 'ASC']]
     })
 
+    const bad = [68, 991, 9217, 1209]
+
     output = output
       .filter(o => {
-        return o.socialTwitter || (o.lookup ? o.lookup.twitter : null)
+        return (
+          (o.socialSkype || (o.lookup ? o.lookup.skype : null)) &&
+          !bad.includes(o.id)
+        )
       })
       .map(o => {
         return {
           id: o.id,
           name: o.name,
-          tw: o.socialTwitter || (o.lookup ? o.lookup.twitter : null)
+          sk: o.socialSkype || (o.lookup ? o.lookup.skype : null)
         }
       })
 
@@ -44,4 +49,4 @@ const twitter = async params => {
   }
 }
 
-module.exports = twitter
+module.exports = skype

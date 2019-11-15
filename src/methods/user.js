@@ -60,6 +60,16 @@ const user = async params => {
       })
     } else {
       output = await User.findAll({
+        attributes: [
+          'id',
+          'name',
+          'nameAlt',
+          'nameAlt2',
+          'email',
+          'emailAlt2',
+          'geo',
+          'lookup'
+        ],
         where,
         limit,
         offset,

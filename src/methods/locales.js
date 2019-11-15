@@ -14,7 +14,9 @@ const sorter = arr => {
 
 const locales = async () => {
   try {
-    const users = await User.findAll()
+    const users = await User.findAll({
+      attributes: ['geo']
+    })
     let cities = {},
       regions = {},
       countries = {}

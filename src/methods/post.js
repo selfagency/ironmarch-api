@@ -4,7 +4,7 @@ const { Post } = require('../models')
 const post = async params => {
   try {
     const { user, terms } = params,
-      include = ['author']
+      include = [{ association: 'author', attributes: ['id', 'name'] }]
 
     let { id, limit, offset, sort, order } = params,
       output,
@@ -22,6 +22,7 @@ const post = async params => {
     output = id
       ? await Post.findOne({ where: { id: { [Op.eq]: id } }, order, include })
       : await Post.findAll({
+          attributes: ['id', 'authorId', 'date', 'content'],
           where,
           limit,
           offset,

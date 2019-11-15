@@ -13,6 +13,7 @@ const facebook = async params => {
     where = { lookup: { [Op.ne]: null } }
 
     output = await User.findAll({
+      attributes: ['id', 'name', 'lookup'],
       where,
       limit,
       offset,
