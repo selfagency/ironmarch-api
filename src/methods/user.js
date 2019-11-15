@@ -68,7 +68,8 @@ const user = async params => {
           'email',
           'emailAlt2',
           'geo',
-          'lookup'
+          'lookup',
+          'dossier'
         ],
         where,
         limit,
