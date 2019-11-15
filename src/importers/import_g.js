@@ -7,7 +7,7 @@ const util = require('util')
 const importer = async () => {
   const id = 10133
   const readFile = util.promisify(fs.readFile)
-  const file = await readFile(`/Users/daniel/Desktop/${id}.html`, 'utf-8')
+  const file = await readFile(`${process.cwd}/src/data/${id}.html`, 'utf-8')
 
   const query = {
     dossier: file
