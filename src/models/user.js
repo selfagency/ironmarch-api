@@ -154,6 +154,10 @@ User.init(
     socialTwitter: {
       type: DataTypes.STRING,
       field: 'social_twitter'
+    },
+    dossier: {
+      type: DataTypes.STRING,
+      field: 'dossier'
     }
   },
   { sequelize: db, modelName: 'user', tableName: 'users', timestamps: false }
