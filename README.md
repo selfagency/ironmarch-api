@@ -63,6 +63,21 @@ now
 - `offset`: Offset results by *n*  (Integer)
 - `terms`: Find usernames containing terms (String)
 
+**`/thread`**
+
+- `id`: Get thread (message collection) by ID *n* (Integer)
+
+**`/meta`**
+
+- `data`: Get data collection by type (String)
+  - `discord`: All discovered Discord invite links
+  - `facebook`: All discovered user Facebook profiles
+  - `linkedin`: All discovered user LinkedIn profiles
+  - `locales`: Number of users by city, region, and country
+  - `skype`: All discovered user Skype account names
+  - `twitter`: All discovered user Twitter profiles
+  - `all`: All of the above
+
 ## Author
 
 👤 **The Jewish Worker <hello@jewishworker.org>**
