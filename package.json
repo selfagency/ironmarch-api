@@ -1,7 +1,7 @@
 {
   "name": "ironmarch-api",
   "description": "API interface for Iron March data dump",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://gitlab.com/jewishworker/ironmarch-api",
   "author": "Iron March Exposed <hello@ironmarch.exposed>",
   "main": "src/index.js",
