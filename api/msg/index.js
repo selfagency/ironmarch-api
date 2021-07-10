@@ -1,12 +1,17 @@
-global.debug = process.env.ENVIRONMENT !== 'development'
-const cors = require('cors')
+const Msg = require('../../common/methods/msg')
 
-const app = require('../../src/app.js')
-const cache = require('../../src/cache.js')
-const msg = require('../../src/routes/msg.js')
-
-msg('/', app, cache, cors, {
-  origin: '*'
-})
-
-app.listen(process.env.PORT || 3031)
+module.exports = async (req, res) => {
+  let out
+  try {
+    out = await Msg(req.query)
+    if (!out || !Object.entries(out).length) {
+      out = req.baseUrl === '/api/message' ? new Error('Item not found') : new Error('No results found')
+      res.status(404)
+    }
+  } catch (err) {
+    out = process.env.debug ? err.stack : err.message
+    res.status(500)
+  } finally {
+    res.send(out)
+  }
+}

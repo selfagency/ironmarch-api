@@ -1,32 +1,26 @@
 {
   "name": "ironmarch-api",
   "description": "API interface for Iron March data dump",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "repository": "https://gitlab.com/jewishworker/ironmarch-api",
   "author": "Iron March Exposed <hello@ironmarch.exposed>",
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
+  	"postinstall": "cd common; tar -xzf ironmarch.db.tgz",
     "start": "node src/index.js",
-    "dev": "./node_modules/.bin/nodemon src/index.js --watch src"
+    "dev": "vc dev"
   },
   "dependencies": {
     "1-liners": "^0.4.2",
-    "base-64": "^0.1.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-redis-cache": "^1.1.3",
     "got": "^9.6.0",
-    "hiredis": "^0.5.0",
-    "mysql2": "^2.0.0",
-    "pg-hstore": "^2.3.3",
     "query-string": "^6.8.3",
-    "sequelize": "^5.21.2"
+    "sequelize": "^5.21.2",
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
-    "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
-    "prettier-eslint": "^9.0.1"
+    "prettier-eslint": "^9.0.1",
+    "vercel": "^21.3.3"
   }
 }
