@@ -15,7 +15,7 @@
     "1-liners": "^0.4.2",
     "got": "^9.6.0",
     "query-string": "^6.8.3",
-    "sequelize": "^5.21.2",
+    "sequelize": "^6.21.2",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
