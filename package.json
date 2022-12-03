@@ -21,6 +21,6 @@
   "devDependencies": {
     "prettier": "^1.19.1",
     "prettier-eslint": "^9.0.1",
-    "vercel": "^21.3.3"
+    "vercel": "^28.7.1"
   }
 }
